@@ -13,3 +13,27 @@ Then, load the data source on start by including this line in `lib/default.rb`:
 ```ruby
 require 'nanoc/data_sources/bibtex_data_source'
 ```
+
+## Usage
+Modify your `config.yaml` to include your data source:
+```yaml
+data_sources:
+  -
+    type: filesystem_unified
+    items_root: /
+    layouts_root: /
+  -
+    type: bibtex
+    items_root: /publications
+    config:
+      path: assets/publications/
+      exclude:
+        - abstract
+```
+The above example configures your site with an additional `bibtex` data source.
+It will load the entries of each BibTeX file in the folder `assets/publications`
+as items whose path will be `/publications/{citation_key}`.
+
+The fields of each item will contain the values of the corresponding BibTeX entry.
+The raw contents of this item will be the BibTeX entry,
+excluding the `abstract` field. 
