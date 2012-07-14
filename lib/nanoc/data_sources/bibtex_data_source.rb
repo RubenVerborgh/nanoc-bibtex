@@ -22,7 +22,7 @@ class BibtexDataSource < Nanoc3::DataSource
     contents = [ "@#{entry.type}{#{entry.key}," ]
     entry.each do |key, value|
       unless @exclude[key.to_s]
-        unless value =~ /\s|\{|\}|"|,|:/
+        unless value =~ /\s|\{|\}|"|,|:|-/
           contents.push "  #{key} = #{value},"
         else
           contents.push "  #{key} = {#{value}},"
