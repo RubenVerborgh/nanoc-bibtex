@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'nanoc-bibtex'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Ruben Verborgh']
   s.email       = ['ruben.verborgh@gmail.com']
