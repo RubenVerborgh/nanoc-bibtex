@@ -34,8 +34,13 @@ class BibtexDataSource < Nanoc::DataSource
   end
 
   def extract_attributes entry
-    attributes = { :key => entry.key }
-    entry.each { |key, value| attributes[key] = value.convert(:latex) }
+    entry = entry.convert :latex
+    attributes = {
+      :bibtex => entry,
+      :key    => entry.key,
+      :type   => entry.type,
+    }
+    entry.each { |key, value| attributes[key] = value }
     attributes
   end
 end
