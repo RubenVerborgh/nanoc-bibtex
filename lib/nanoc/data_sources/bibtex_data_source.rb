@@ -37,7 +37,7 @@ class BibtexDataSource < Nanoc::DataSource
   end
 
   def extract_attributes entry
-    entry = entry.convert :latex
+    entry = entry.convert(:latex) { |key| key != :url }
     attributes = {
       :bibtex => entry,
       :key    => entry.key,
