@@ -11,9 +11,12 @@ class BibtexDataSource < Nanoc::DataSource
 
   def items
     @files.map do |file|
+      stat = File.stat file
+      file_checksum = stat.size.to_s + '-' + stat.mtime.to_i.to_s
       entries = BibTeX.open(file)
       entries.map do |entry|
-        new_item to_bibtex(entry), extract_attributes(entry), "/#{entry.key}"
+        new_item lambda { to_bibtex entry }, lambda { extract_attributes entry },
+                 '/' + entry.key, checksum_data: file_checksum
       end
     end.flatten!
   end
