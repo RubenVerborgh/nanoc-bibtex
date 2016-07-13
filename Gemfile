@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'bibtex-ruby',  '~> 4.1'
 gem 'nanoc',        '~> 4.2'
+gem 'bibtex-ruby',  '~> 4.4.1'
 gem 'latex-decode', '~> 0.2'
 
 group :development do
